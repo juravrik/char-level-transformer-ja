@@ -1,3 +1,5 @@
 # Char-Level-Transformer-Ja #
 ### dataset
-https://github.com/Hironsan/ja.text8
+[livedoorニュースコーパス](https://www.rondhuit.com/download.html)
+### model
+char粒度のtransformerを試しています。このままのパラメータだと一般的な環境ではそうそう動かないのではないかと思うので適宜削ってください。
