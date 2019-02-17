@@ -487,7 +487,7 @@ for epoch in range(1, num_epochs+1):
         loss.backward()
         optimizer.step()        
         
-        train_loss += loss
+        train_loss += loss.item()
     # test
     for batch in valid_dataloader:
         batch_X, batch_Y = batch
@@ -495,11 +495,11 @@ for epoch in range(1, num_epochs+1):
         
         loss = criterion(pred_Y[0], batch_Y.view(-1))
         
-        valid_loss += loss
+        valid_loss += loss.item()
     
     print("train:",train_loss, ", valid:", valid_loss)
-    log_train_loss.append(train_loss)
-    log_valid_loss.append(valid_loss)
+    log_train_loss.append(train_loss/len(train_dataloader.data))
+    log_valid_loss.append(valid_loss/len(valid_dataloader.data))
     
     ckpt = model.state_dict()
     torch.save(ckpt, ckpt_path)
